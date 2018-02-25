@@ -18,7 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.DifficultyActivity"></activity>
+        <activity android:name=".ui.DifficultyActivity" />
+        <activity android:name=".ui.QuestionActivity"></activity>
     </application>
 
 </manifest>

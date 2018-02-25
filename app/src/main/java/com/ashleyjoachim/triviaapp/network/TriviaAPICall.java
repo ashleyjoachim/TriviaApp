@@ -10,11 +10,11 @@ import retrofit2.http.Query;
 public interface TriviaAPICall {
     @GET("api.php?")
     Call<TriviaWrapperClass> getTriviaDiscover(
-            @Query("amount") int amount,
             @Query("category") int category,
             @Query("difficulty") String difficulty
     );
 
     @GET("api_category.php")
     Call<TriviaWrapperClass> getCategoryDiscover();
+
 }
