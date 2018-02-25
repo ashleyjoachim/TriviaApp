@@ -1,15 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/activity_margin"
     tools:context="com.ashleyjoachim.triviaapp.ui.DifficultyActivity">
 
     <TextView
         android:id="@+id/textview_placeholder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="place holder"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+        android:text="Text"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/easy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Easy"
+        app:layout_constraintBottom_toTopOf="@id/medium"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_placeholder" />
+
+    <Button
+        android:id="@+id/medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Medium"
+        app:layout_constraintBottom_toTopOf="@id/hard"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/easy" />
+
+    <Button
+        android:id="@+id/hard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hard"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/medium" />
+
 
 </android.support.constraint.ConstraintLayout>
