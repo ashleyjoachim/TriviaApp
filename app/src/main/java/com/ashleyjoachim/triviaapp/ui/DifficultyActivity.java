@@ -12,8 +12,7 @@ import com.ashleyjoachim.triviaapp.R;
 
 
 public class DifficultyActivity extends AppCompatActivity implements View.OnClickListener {
-    private TextView textView;
-    private Button easy, medium, hard;
+    public static final String EASY = "Easy", MEDIUM = "Medium", HARD = "Hard";
     private int id;
 
     @Override
@@ -21,15 +20,17 @@ public class DifficultyActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_difficulty);
         String name = getIntent().getExtras().getString("name");
-        textView = findViewById(R.id.textview_placeholder);
-        textView.setText("Category \n" + name);
+        TextView textView = findViewById(R.id.textview_placeholder); //remove later
+        textView.setText("Category \n" + name);// remove later
         id = getIntent().getExtras().getInt("id");
 
-        easy = findViewById(R.id.easy);
+        Button easy = findViewById(R.id.easy);
         easy.setOnClickListener(this);
-        medium = findViewById(R.id.medium);
+
+        Button medium = findViewById(R.id.medium);
         medium.setOnClickListener(this);
-        hard = findViewById(R.id.hard);
+
+        Button hard = findViewById(R.id.hard);
         hard.setOnClickListener(this);
     }
 
@@ -37,16 +38,13 @@ public class DifficultyActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.easy:
-                setDifficulty("easy");
-                Toast.makeText(getApplicationContext(), "Selected Easy", Toast.LENGTH_SHORT).show();
+                setDifficulty(EASY);
                 break;
             case R.id.medium:
-                setDifficulty("medium");
-                Toast.makeText(getApplicationContext(), "Selected Medium", Toast.LENGTH_SHORT).show();
+                setDifficulty(MEDIUM);
                 break;
             case R.id.hard:
-                setDifficulty("hard");
-                Toast.makeText(getApplicationContext(), "Selected Hard", Toast.LENGTH_SHORT).show();
+                setDifficulty(HARD);
                 break;
         }
     }
@@ -58,5 +56,6 @@ public class DifficultyActivity extends AppCompatActivity implements View.OnClic
         bundle.putInt("id", id);
         questionActivity.putExtras(bundle);
         startActivity(questionActivity);
+        Toast.makeText(getApplicationContext(), "Selected " + mode, Toast.LENGTH_SHORT).show();
     }
 }

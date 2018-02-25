@@ -1,9 +1,7 @@
 package com.ashleyjoachim.triviaapp.ui;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -26,10 +24,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private static final TriviaAPICall triviaAPICallback = TriviaServiceGenerator.createService();
-    private Button catergoryButton;
-    private LinearLayoutManager linearLayoutManager;
     private RecyclerView recyclerView;
-    private TriviaCategoryAdapter triviaCategoryAdapter;
     private List<TriviaCategory> triviaCategories = new ArrayList<>();
 
 
@@ -37,11 +32,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        catergoryButton = findViewById(R.id.category_button);
-
         recyclerView = findViewById(R.id.category_rv);
-        triviaCategoryAdapter = new TriviaCategoryAdapter(triviaCategories);
-        linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+        TriviaCategoryAdapter triviaCategoryAdapter = new TriviaCategoryAdapter(triviaCategories);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setAdapter(triviaCategoryAdapter);
         recyclerView.setLayoutManager(linearLayoutManager);
 
@@ -49,8 +42,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getTriviaCategoryDiscover() {
-        Call<TriviaWrapperClass> call =
-                triviaAPICallback.getCategoryDiscover();
+        Call<TriviaWrapperClass> call = triviaAPICallback.getCategoryDiscover();
         call.enqueue(new Callback<TriviaWrapperClass>() {
             @Override
             public void onResponse(Call<TriviaWrapperClass> call, Response<TriviaWrapperClass> response) {
