@@ -3,24 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_half_margin"
+        android:gravity="center"
+        android:text="Question"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+    <RadioGroup
+        android:id="@+id/choices_group"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="@dimen/activity_margin">
 
-
-
-        <TextView
-            android:id="@+id/question"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_half_margin"
-            android:gravity="center"
-            android:text="Question"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
-
-        <TextView
+        <RadioButton
             android:id="@+id/choice_one"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,7 +27,7 @@
             android:text="Choice One"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
-        <TextView
+        <RadioButton
             android:id="@+id/choice_two"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,7 +35,7 @@
             android:text="Choice two"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
-        <TextView
+        <RadioButton
             android:id="@+id/choice_three"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,7 +43,7 @@
             android:text="Choice three"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
-        <TextView
+        <RadioButton
             android:id="@+id/choice_four"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,5 +51,5 @@
             android:text="Choice four"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
-    </LinearLayout>
+    </RadioGroup>
 </android.support.v7.widget.CardView>

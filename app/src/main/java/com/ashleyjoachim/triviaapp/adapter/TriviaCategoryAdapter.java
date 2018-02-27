@@ -39,8 +39,8 @@ public class TriviaCategoryAdapter extends RecyclerView.Adapter<TriviaCategoryAd
         final String name = triviaCategories.get(position).getName();
         final int id = triviaCategories.get(position).getId();
 
-        holder.categoryButton.setText(name);
-        holder.categoryButton.setOnClickListener(new View.OnClickListener() {
+        holder.buttonCategory.setText(name);
+        holder.buttonCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent difficultyActivity = new Intent(context, DifficultyActivity.class);
@@ -59,11 +59,11 @@ public class TriviaCategoryAdapter extends RecyclerView.Adapter<TriviaCategoryAd
     }
 
     public class TriviaCategoryViewHolder extends RecyclerView.ViewHolder {
-        private Button categoryButton;
+        private Button buttonCategory;
 
         public TriviaCategoryViewHolder(View itemView) {
             super(itemView);
-            categoryButton = itemView.findViewById(R.id.category_button);
+            buttonCategory = itemView.findViewById(R.id.category_button);
         }
     }
 }

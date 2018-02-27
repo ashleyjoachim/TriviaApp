@@ -12,4 +12,5 @@ public class TriviaCategory {
     public String getName() {
         return name;
     }
+
 }

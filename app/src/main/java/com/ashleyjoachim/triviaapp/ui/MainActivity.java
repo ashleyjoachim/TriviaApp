@@ -1,17 +1,15 @@
 package com.ashleyjoachim.triviaapp.ui;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.Button;
 
 import com.ashleyjoachim.triviaapp.R;
 import com.ashleyjoachim.triviaapp.adapter.TriviaCategoryAdapter;
 import com.ashleyjoachim.triviaapp.model.TriviaCategory;
+import com.ashleyjoachim.triviaapp.model.TriviaTokenRequest;
 import com.ashleyjoachim.triviaapp.model.TriviaWrapperClass;
 import com.ashleyjoachim.triviaapp.network.TriviaAPICall;
 import com.ashleyjoachim.triviaapp.network.TriviaServiceGenerator;
@@ -26,10 +24,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private static final TriviaAPICall triviaAPICallback = TriviaServiceGenerator.createService();
-    private Button catergoryButton;
-    private LinearLayoutManager linearLayoutManager;
     private RecyclerView recyclerView;
-    private TriviaCategoryAdapter triviaCategoryAdapter;
     private List<TriviaCategory> triviaCategories = new ArrayList<>();
 
 
@@ -37,20 +32,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        catergoryButton = findViewById(R.id.category_button);
-
         recyclerView = findViewById(R.id.category_rv);
-        triviaCategoryAdapter = new TriviaCategoryAdapter(triviaCategories);
-        linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+        TriviaCategoryAdapter triviaCategoryAdapter = new TriviaCategoryAdapter(triviaCategories);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setAdapter(triviaCategoryAdapter);
         recyclerView.setLayoutManager(linearLayoutManager);
 
         getTriviaCategoryDiscover();
+//        getTokenFromAPI();
     }
 
     public void getTriviaCategoryDiscover() {
-        Call<TriviaWrapperClass> call =
-                triviaAPICallback.getCategoryDiscover();
+        Call<TriviaWrapperClass> call = triviaAPICallback.getCategoryDiscover();
         call.enqueue(new Callback<TriviaWrapperClass>() {
             @Override
             public void onResponse(Call<TriviaWrapperClass> call, Response<TriviaWrapperClass> response) {
@@ -62,6 +55,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<TriviaWrapperClass> call, Throwable t) {
                 Log.d("MainActivity", "onFailure: " + t.getStackTrace());
+            }
+        });
+    }
+
+    public void getTokenFromAPI() {
+        Call<TriviaTokenRequest> call = triviaAPICallback.getTokenDiscover();
+        call.enqueue(new Callback<TriviaTokenRequest>() {
+            @Override
+            public void onResponse(Call<TriviaTokenRequest> call, Response<TriviaTokenRequest> response) {
+                String token = response.body().getToken();
+                Bundle sendToken = new Bundle();
+                sendToken.putString("token", token);
+                Log.e("Token", "onResponse: " + response.body().getResponse_message());
+            }
+
+            @Override
+            public void onFailure(Call<TriviaTokenRequest> call, Throwable t) {
+                Log.e("Token", "onFailure: " + t.getStackTrace());
             }
         });
     }
