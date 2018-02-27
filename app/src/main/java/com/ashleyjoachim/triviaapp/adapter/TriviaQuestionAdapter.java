@@ -16,10 +16,10 @@ import java.util.List;
 
 public class TriviaQuestionAdapter extends RecyclerView.Adapter<TriviaQuestionAdapter.TriviaQuestionViewHolder> {
 
-    private List<TriviaCategory> triviaResults = new ArrayList<>();
+    private List<TriviaResults> triviaResults = new ArrayList<>();
     private Context context;
 
-    public TriviaQuestionAdapter(List<TriviaCategory> triviaResults) {
+    public TriviaQuestionAdapter(List<TriviaResults> triviaResults) {
         this.triviaResults = triviaResults;
     }
 
@@ -33,7 +33,7 @@ public class TriviaQuestionAdapter extends RecyclerView.Adapter<TriviaQuestionAd
 
     @Override
     public void onBindViewHolder(TriviaQuestionViewHolder holder, int position) {
-
+        String name = triviaResults.get(position).getIncorrect_answers()[9];
     }
 
     @Override

@@ -5,11 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.Button;
 
 import com.ashleyjoachim.triviaapp.R;
 import com.ashleyjoachim.triviaapp.adapter.TriviaCategoryAdapter;
 import com.ashleyjoachim.triviaapp.model.TriviaCategory;
+import com.ashleyjoachim.triviaapp.model.TriviaTokenRequest;
 import com.ashleyjoachim.triviaapp.model.TriviaWrapperClass;
 import com.ashleyjoachim.triviaapp.network.TriviaAPICall;
 import com.ashleyjoachim.triviaapp.network.TriviaServiceGenerator;
@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
 
         getTriviaCategoryDiscover();
+//        getTokenFromAPI();
     }
 
     public void getTriviaCategoryDiscover() {
@@ -54,6 +55,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<TriviaWrapperClass> call, Throwable t) {
                 Log.d("MainActivity", "onFailure: " + t.getStackTrace());
+            }
+        });
+    }
+
+    public void getTokenFromAPI() {
+        Call<TriviaTokenRequest> call = triviaAPICallback.getTokenDiscover();
+        call.enqueue(new Callback<TriviaTokenRequest>() {
+            @Override
+            public void onResponse(Call<TriviaTokenRequest> call, Response<TriviaTokenRequest> response) {
+                String token = response.body().getToken();
+                Bundle sendToken = new Bundle();
+                sendToken.putString("token", token);
+                Log.e("Token", "onResponse: " + response.body().getResponse_message());
+            }
+
+            @Override
+            public void onFailure(Call<TriviaTokenRequest> call, Throwable t) {
+                Log.e("Token", "onFailure: " + t.getStackTrace());
             }
         });
     }

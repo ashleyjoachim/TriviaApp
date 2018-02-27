@@ -8,7 +8,7 @@
     tools:context="com.ashleyjoachim.triviaapp.ui.QuestionActivity">
 
     <TextView
-        android:id="@+id/difficulty_setting"
+        android:id="@+id/textview_difficulty_setting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
@@ -18,7 +18,7 @@
         android:id="@+id/question_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/difficulty_setting">
+        app:layout_constraintTop_toBottomOf="@id/textview_difficulty_setting">
 
     </android.support.v7.widget.RecyclerView>
 </android.support.constraint.ConstraintLayout>
