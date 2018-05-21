@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioGroup;
 
 import com.ashleyjoachim.triviaapp.R;
 import com.ashleyjoachim.triviaapp.model.TriviaResults;
@@ -26,8 +27,8 @@ public class TriviaQuestionAdapter extends RecyclerView.Adapter<TriviaQuestionVi
     }
 
     @Override
-    public void onBindViewHolder(TriviaQuestionViewHolder holder, int position) {
-        TriviaResults triviaResults = triviaResultsList.get(position);
+    public void onBindViewHolder(TriviaQuestionViewHolder holder, final int position) {
+        final TriviaResults triviaResults = triviaResultsList.get(position);
         holder.onBind(triviaResults);
     }
 

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/activity_margin"
     tools:context="com.ashleyjoachim.triviaapp.ui.QuestionActivity">
 
     <TextView
@@ -14,11 +13,11 @@
         android:layout_gravity="end"
         android:text="Difficulty" />
 
-    <android.support.v7.widget.RecyclerView
+    <com.yarolegovich.discretescrollview.DiscreteScrollView
         android:id="@+id/question_rv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:layout_constraintTop_toBottomOf="@id/textview_difficulty_setting">
 
-    </android.support.v7.widget.RecyclerView>
+    </com.yarolegovich.discretescrollview.DiscreteScrollView>
 </android.support.constraint.ConstraintLayout>

@@ -3,17 +3,18 @@ package com.ashleyjoachim.triviaapp.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.TextView;
+import android.view.View;
 
+import com.ToxicBakery.viewpager.transforms.CubeOutTransformer;
 import com.ashleyjoachim.triviaapp.R;
 import com.ashleyjoachim.triviaapp.adapter.TriviaQuestionAdapter;
 import com.ashleyjoachim.triviaapp.model.TriviaResults;
 import com.ashleyjoachim.triviaapp.model.TriviaWrapperClass;
 import com.ashleyjoachim.triviaapp.network.TriviaAPICall;
 import com.ashleyjoachim.triviaapp.network.TriviaServiceGenerator;
+import com.yarolegovich.discretescrollview.DiscreteScrollView;
+import com.yarolegovich.discretescrollview.transform.DiscreteScrollItemTransformer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,7 @@ public class QuestionActivity extends AppCompatActivity {
     private static String difficulty;
     private static int count;
     private static String getToken;
-    private RecyclerView recyclerView;
+    private DiscreteScrollView recyclerView;
     private List<TriviaResults> questionList = new ArrayList<>();
 
     @Override
@@ -43,15 +44,19 @@ public class QuestionActivity extends AppCompatActivity {
         count = intent.getIntExtra("count", 10);
         getToken = intent.getExtras().getString("token");
 
-        TextView textViewSetting = findViewById(R.id.textview_difficulty_setting);
-        textViewSetting.setText(difficulty);
-
         TriviaQuestionAdapter triviaQuestionAdapter = new TriviaQuestionAdapter(questionList);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
 
         recyclerView = findViewById(R.id.question_rv);
         recyclerView.setAdapter(triviaQuestionAdapter);
-        recyclerView.setLayoutManager(linearLayoutManager);
+
+        recyclerView.setItemTransformer(new DiscreteScrollItemTransformer() {
+            @Override
+            public void transformItem(View item, float position) {
+                CubeOutTransformer cubeOutTransformer = new CubeOutTransformer();
+                cubeOutTransformer.transformPage(item, position);
+                cubeOutTransformer.isPagingEnabled();
+            }
+        });
 
         getTriviaData();
     }
