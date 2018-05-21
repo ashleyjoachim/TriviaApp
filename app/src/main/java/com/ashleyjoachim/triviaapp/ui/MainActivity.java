@@ -24,6 +24,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private static final TriviaAPICall triviaAPICallback = TriviaServiceGenerator.createService();
+    private static final String TAG = "Token";
     private RecyclerView recyclerView;
     private List<TriviaCategory> triviaCategories = new ArrayList<>();
 
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
 
         getTriviaCategoryDiscover();
-//        getTokenFromAPI();
+        getTokenFromAPI();
     }
 
     public void getTriviaCategoryDiscover() {
@@ -60,19 +61,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getTokenFromAPI() {
-        Call<TriviaTokenRequest> call = triviaAPICallback.getTokenDiscover();
+        Call<TriviaTokenRequest> call = triviaAPICallback.getTokenDiscover("request");
+
         call.enqueue(new Callback<TriviaTokenRequest>() {
             @Override
             public void onResponse(Call<TriviaTokenRequest> call, Response<TriviaTokenRequest> response) {
                 String token = response.body().getToken();
-                Bundle sendToken = new Bundle();
-                sendToken.putString("token", token);
-                Log.e("Token", "onResponse: " + response.body().getResponse_message());
+                Bundle bundle = new Bundle();
+                bundle.putString("token", token);
+                Log.e(TAG, "onResponse: " + response.body().getResponse_message());
             }
 
             @Override
             public void onFailure(Call<TriviaTokenRequest> call, Throwable t) {
-                Log.e("Token", "onFailure: " + t.getStackTrace());
+                Log.e(TAG, "onFailure: " + t.getStackTrace());
             }
         });
     }

@@ -22,7 +22,9 @@ public interface TriviaAPICall {
     );
 
     @GET("api_token.php?")
-    Call<TriviaTokenRequest> getTokenDiscover();
+    Call<TriviaTokenRequest> getTokenDiscover(
+            @Query("command") String command
+    );
 
     @GET("api_token.php?")
     Call<TriviaTokenReset> resetTokenDiscover(

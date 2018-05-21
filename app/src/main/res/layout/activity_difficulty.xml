@@ -17,35 +17,15 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button_easy"
+    <com.yarolegovich.discretescrollview.DiscreteScrollView
+        android:id="@+id/difficulty_picker_rv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Easy"
-        app:layout_constraintBottom_toTopOf="@id/button_medium"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_placeholder" />
-
-    <Button
-        android:id="@+id/button_medium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Medium"
-        app:layout_constraintBottom_toTopOf="@id/button_hard"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_easy" />
-
-    <Button
-        android:id="@+id/button_hard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Hard"
+        android:layout_height="match_parent"
+        app:dsv_orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_medium" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_placeholder" />
 
 
 </android.support.constraint.ConstraintLayout>
