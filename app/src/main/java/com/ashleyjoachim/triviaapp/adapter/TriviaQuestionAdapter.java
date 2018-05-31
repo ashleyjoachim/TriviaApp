@@ -1,50 +1,42 @@
 package com.ashleyjoachim.triviaapp.adapter;
 
-
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.ashleyjoachim.triviaapp.R;
-import com.ashleyjoachim.triviaapp.model.TriviaCategory;
 import com.ashleyjoachim.triviaapp.model.TriviaResults;
+import com.yarolegovich.discretescrollview.DiscreteScrollView;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class TriviaQuestionAdapter extends RecyclerView.Adapter<TriviaQuestionAdapter.TriviaQuestionViewHolder> {
+public class TriviaQuestionAdapter extends RecyclerView.Adapter<TriviaQuestionViewHolder> {
 
-    private List<TriviaResults> triviaResults = new ArrayList<>();
-    private Context context;
+    private List<TriviaResults> triviaResultsList;
 
-    public TriviaQuestionAdapter(List<TriviaResults> triviaResults) {
-        this.triviaResults = triviaResults;
+    public TriviaQuestionAdapter(List<TriviaResults> triviaResultsList) {
+        this.triviaResultsList = triviaResultsList;
+        notifyDataSetChanged();
     }
 
     @Override
     public TriviaQuestionViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.question_itemview, parent, false);
-        context = parent.getContext();
         return new TriviaQuestionViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(TriviaQuestionViewHolder holder, int position) {
-        String name = triviaResults.get(position).getIncorrect_answers()[9];
+    public void onBindViewHolder(TriviaQuestionViewHolder holder, final int position) {
+        final TriviaResults triviaResults = triviaResultsList.get(position);
+        holder.onBind(triviaResults);
     }
 
     @Override
     public int getItemCount() {
-        return triviaResults.size();
+        return triviaResultsList.size();
     }
 
-    public class TriviaQuestionViewHolder extends RecyclerView.ViewHolder {
-        public TriviaQuestionViewHolder(View itemView) {
-            super(itemView);
-
-        }
-    }
 }

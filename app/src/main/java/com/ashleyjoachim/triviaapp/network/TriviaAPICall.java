@@ -6,6 +6,7 @@ import com.ashleyjoachim.triviaapp.model.TriviaTokenRequest;
 import com.ashleyjoachim.triviaapp.model.TriviaTokenReset;
 import com.ashleyjoachim.triviaapp.model.TriviaWrapperClass;
 
+import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -13,8 +14,7 @@ import retrofit2.http.Query;
 public interface TriviaAPICall {
 
     @GET("api_category.php?")
-    Call<TriviaWrapperClass> getCategoryDiscover();
-
+    Observable<TriviaWrapperClass> getCategoryDiscover();
 
     @GET("api_count.php?")
     Call<CategoryCountWrapper> getQuestionCount(
@@ -22,7 +22,9 @@ public interface TriviaAPICall {
     );
 
     @GET("api_token.php?")
-    Call<TriviaTokenRequest> getTokenDiscover();
+    Call<TriviaTokenRequest> getTokenDiscover(
+            @Query("command") String command
+    );
 
     @GET("api_token.php?")
     Call<TriviaTokenReset> resetTokenDiscover(
