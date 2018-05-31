@@ -10,12 +10,13 @@ import com.ashleyjoachim.triviaapp.R;
 import com.ashleyjoachim.triviaapp.model.TriviaCategory;
 import com.ashleyjoachim.triviaapp.ui.DifficultyActivity;
 
-public class TriviaCategoryViewHolder extends RecyclerView.ViewHolder {
+public class TriviaCategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     private Button buttonCategory;
 
     public TriviaCategoryViewHolder(View itemView) {
         super(itemView);
         buttonCategory = itemView.findViewById(R.id.category_button);
+        buttonCategory.setOnClickListener(this);
     }
 
     public void onBind(TriviaCategory triviaCategory) {
@@ -23,6 +24,7 @@ public class TriviaCategoryViewHolder extends RecyclerView.ViewHolder {
         final int id = triviaCategory.getId();
 
         buttonCategory.setText(name);
+
         buttonCategory.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -37,4 +39,8 @@ public class TriviaCategoryViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
+    @Override
+    public void onClick(View view) {
+
+    }
 }

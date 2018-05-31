@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ashleyjoachim.triviaapp.R;
@@ -12,7 +12,7 @@ import com.ashleyjoachim.triviaapp.model.DifficultyModel;
 import com.ashleyjoachim.triviaapp.ui.QuestionActivity;
 
 public class DifficultyViewHolder extends RecyclerView.ViewHolder {
-    private Button mode;
+    private TextView mode;
 
     public DifficultyViewHolder(View itemView) {
         super(itemView);

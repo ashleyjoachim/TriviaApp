@@ -11,12 +11,13 @@ import android.widget.Toast;
 import com.ashleyjoachim.triviaapp.R;
 import com.ashleyjoachim.triviaapp.model.TriviaResults;
 
+
 public class TriviaQuestionViewHolder extends RecyclerView.ViewHolder {
     private TextView question;
     private RadioGroup questionGroup;
     private RadioButton choiceOne, choiceTwo, choiceThree, choiceFour;
-    private Button answerBtn;
-
+    private Button resultBtn;
+    private int score;
 
     public TriviaQuestionViewHolder(View itemView) {
         super(itemView);
@@ -27,20 +28,28 @@ public class TriviaQuestionViewHolder extends RecyclerView.ViewHolder {
         choiceTwo = itemView.findViewById(R.id.choice_two);
         choiceThree = itemView.findViewById(R.id.choice_three);
         choiceFour = itemView.findViewById(R.id.choice_four);
-        answerBtn = itemView.findViewById(R.id.get_answer);
     }
 
-    public void onBind(TriviaResults triviaResults) {
+    public void onBind(final TriviaResults triviaResults) {
+        resetRadioButtons();
+        setQuestions(triviaResults);
+        setChoices(triviaResults);
+    }
+
+    private void setQuestions(TriviaResults triviaResults) {
         String questionText = triviaResults.getQuestion();
 
         String a = questionText.replace("&quot;", "\"");
         String b = a.replace("&#039;", "\'");
         String c = b.replace("&shy;", "-");
+        String d = c.replace("&eacute;", "é");
 
-        question.setText(c);
+        question.setText(d);
+    }
 
+    public void setChoices(final TriviaResults triviaResults) {
         final String[] incorrect = triviaResults.getIncorrect_answers();
-        String correct = triviaResults.getCorrect_answer();
+        final String correct = triviaResults.getCorrect_answer();
 
         if (incorrect.length == 1) {
 
@@ -52,8 +61,8 @@ public class TriviaQuestionViewHolder extends RecyclerView.ViewHolder {
                 choiceTwo.setText(correct);
             }
 
-            choiceThree.setVisibility(View.INVISIBLE);
-            choiceFour.setVisibility(View.INVISIBLE);
+            choiceThree.setVisibility(View.GONE);
+            choiceFour.setVisibility(View.GONE);
         } else {
 
             choiceOne.setText(correct);
@@ -62,14 +71,41 @@ public class TriviaQuestionViewHolder extends RecyclerView.ViewHolder {
             choiceFour.setText(incorrect[2]);
         }
 
-//        answerBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                int selectedId=questionGroup.getCheckedRadioButtonId();
-//                choiceOne=itemView.findViewById(selectedId);
-//                Toast.makeText(itemView.getContext(),choiceOne.getText(),Toast.LENGTH_SHORT).show();
-//
-//            }
-//        });
+
+        questionGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton checkedRadioButton = group.findViewById(checkedId);
+
+                boolean isChecked = checkedRadioButton.isChecked();
+
+                if (isChecked) {
+
+                    Toast.makeText(itemView.getContext(), "Checked: " + checkedRadioButton.getText().toString(), Toast.LENGTH_SHORT).show();
+
+                    if (correct.equals(checkedRadioButton.getText().toString())) {
+                        Toast.makeText(itemView.getContext(), "correct", Toast.LENGTH_SHORT).show();
+                        score++;
+                    } else {
+                        Toast.makeText(itemView.getContext(), "incorrect", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+        });
     }
+
+    private void resetRadioButtons() {
+        choiceOne.setChecked(false);
+
+        choiceTwo.setChecked(false);
+
+        choiceThree.setChecked(false);
+
+        choiceThree.setVisibility(View.VISIBLE);
+
+        choiceFour.setChecked(false);
+
+        choiceFour.setVisibility(View.VISIBLE);
+    }
+
 }

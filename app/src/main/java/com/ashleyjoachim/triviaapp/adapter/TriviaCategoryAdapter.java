@@ -30,7 +30,6 @@ public class TriviaCategoryAdapter extends RecyclerView.Adapter<TriviaCategoryVi
     public void onBindViewHolder(TriviaCategoryViewHolder holder, final int position) {
         TriviaCategory triviaCategory = triviaCategories.get(position);
         holder.onBind(triviaCategory);
-
     }
 
     @Override

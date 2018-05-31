@@ -8,15 +8,6 @@ public class TriviaResults {
     private String question;
     private String correct_answer;
     private String[] incorrect_answers;
-    private int checkedId = -1;
-
-    public int getCheckedId() {
-        return checkedId;
-    }
-
-    public void setCheckedId(int checkedId) {
-        this.checkedId = checkedId;
-    }
 
     public String getCategory() {
         return category;

@@ -1,13 +1,14 @@
 package com.ashleyjoachim.triviaapp.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioGroup;
 
 import com.ashleyjoachim.triviaapp.R;
 import com.ashleyjoachim.triviaapp.model.TriviaResults;
+import com.yarolegovich.discretescrollview.DiscreteScrollView;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class TriviaQuestionAdapter extends RecyclerView.Adapter<TriviaQuestionVi
 
     public TriviaQuestionAdapter(List<TriviaResults> triviaResultsList) {
         this.triviaResultsList = triviaResultsList;
+        notifyDataSetChanged();
     }
 
     @Override
