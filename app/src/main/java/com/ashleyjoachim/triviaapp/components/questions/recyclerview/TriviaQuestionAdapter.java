@@ -1,14 +1,12 @@
-package com.ashleyjoachim.triviaapp.adapter;
+package com.ashleyjoachim.triviaapp.components.questions.recyclerview;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.ashleyjoachim.triviaapp.R;
-import com.ashleyjoachim.triviaapp.model.TriviaResults;
-import com.yarolegovich.discretescrollview.DiscreteScrollView;
+import com.ashleyjoachim.triviaapp.components.questions.model.TriviaResults;
 
 import java.util.List;
 

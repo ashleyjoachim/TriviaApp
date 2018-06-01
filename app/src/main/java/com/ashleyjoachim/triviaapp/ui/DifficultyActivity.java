@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.ashleyjoachim.triviaapp.R;
-import com.ashleyjoachim.triviaapp.adapter.DifficultyAdapter;
-import com.ashleyjoachim.triviaapp.model.DifficultyModel;
+import com.ashleyjoachim.triviaapp.components.difficulty.recyclerview.DifficultyAdapter;
+import com.ashleyjoachim.triviaapp.components.difficulty.model.DifficultyModel;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.InfiniteScrollAdapter;
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer;

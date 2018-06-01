@@ -1,5 +1,8 @@
-package com.ashleyjoachim.triviaapp.model;
+package com.ashleyjoachim.triviaapp.basemodel;
 
+
+import com.ashleyjoachim.triviaapp.components.category.model.TriviaCategory;
+import com.ashleyjoachim.triviaapp.components.questions.model.TriviaResults;
 
 import java.util.List;
 
