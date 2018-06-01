@@ -24,7 +24,7 @@ public class CategoryPresenter implements CategoryPresenterInterface {
     @Override
     public void getCategories() {
 
-        getObservable().subscribeWith(getObserver());
+        getObservable().safeSubscribe(getObserver());
     }
 
     private Observable<TriviaWrapperClass> getObservable() {
@@ -39,21 +39,20 @@ public class CategoryPresenter implements CategoryPresenterInterface {
         return new DisposableObserver<TriviaWrapperClass>() {
             @Override
             public void onNext(@NonNull TriviaWrapperClass triviaWrapperClass) {
-                Log.d(TAG, "OnNext: " + triviaWrapperClass.getResponse_code());
                 cvi.displayCategories(triviaWrapperClass);
+                Log.d(TAG, "OnNext: " + triviaWrapperClass.getResponse_code());
             }
 
             @Override
             public void onError(@NonNull Throwable e) {
-                Log.d(TAG, "onError: " + e.getStackTrace());
-                e.printStackTrace();
                 cvi.displayError("Error fetching Categories Data");
+                Log.d(TAG, "onError: " + e.getStackTrace());
             }
 
             @Override
             public void onComplete() {
-                Log.d(TAG, "Completed");
                 cvi.hideProgressBar();
+                Log.d(TAG, "Completed");
             }
         };
     }

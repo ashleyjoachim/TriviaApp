@@ -27,24 +27,21 @@ public class MainActivity extends AppCompatActivity implements CategoryViewInter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         categoryRv = findViewById(R.id.category_rv);
-        progressBar = findViewById(R.id.progressBar);
+        progressBar = findViewById(R.id.category_progress_bar);
 
         categoryPresenter = new CategoryPresenter(this);
         categoryRv.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         categoryPresenter.getCategories();
-
     }
-    
+
     @Override
     public void showToast(String s) {
         Toast.makeText(MainActivity.this, s, Toast.LENGTH_LONG).show();
-
     }
 
     @Override
     public void showProgressBar() {
         progressBar.setVisibility(View.VISIBLE);
-
     }
 
     @Override
@@ -59,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements CategoryViewInter
             Log.d(TAG, "OnSuccess: " + triviaWrapperClass.getResponse_code());
 
         } else {
-            Log.d(TAG, "Movies response null");
+            Log.d(TAG, "Category response null");
         }
     }
 

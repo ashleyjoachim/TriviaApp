@@ -14,8 +14,11 @@ import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.ashleyjoachim.triviaapp.Constants.EASY;
+import static com.ashleyjoachim.triviaapp.Constants.HARD;
+import static com.ashleyjoachim.triviaapp.Constants.MEDIUM;
+
 public class DifficultyActivity extends AppCompatActivity {
-    private static final String EASY = "easy", MEDIUM = "medium", HARD = "hard";
     private DiscreteScrollView difficultyRecyclerView;
     private DifficultyAdapter difficultyAdapter;
     private InfiniteScrollAdapter wrapper;
