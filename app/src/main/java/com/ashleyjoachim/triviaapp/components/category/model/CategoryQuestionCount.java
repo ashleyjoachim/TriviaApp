@@ -1,4 +1,4 @@
-package com.ashleyjoachim.triviaapp.model;
+package com.ashleyjoachim.triviaapp.components.category.model;
 
 public class CategoryQuestionCount {
     private int total_question_count;

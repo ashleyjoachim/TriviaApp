@@ -1,4 +1,4 @@
-package com.ashleyjoachim.triviaapp.model;
+package com.ashleyjoachim.triviaapp.components.questions.model;
 
 
 public class TriviaResults {

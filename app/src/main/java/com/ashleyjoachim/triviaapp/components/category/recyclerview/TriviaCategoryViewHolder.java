@@ -1,4 +1,4 @@
-package com.ashleyjoachim.triviaapp.adapter;
+package com.ashleyjoachim.triviaapp.components.category.recyclerview;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,16 +7,15 @@ import android.view.View;
 import android.widget.Button;
 
 import com.ashleyjoachim.triviaapp.R;
-import com.ashleyjoachim.triviaapp.model.TriviaCategory;
+import com.ashleyjoachim.triviaapp.components.category.model.TriviaCategory;
 import com.ashleyjoachim.triviaapp.ui.DifficultyActivity;
 
-public class TriviaCategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class TriviaCategoryViewHolder extends RecyclerView.ViewHolder {
     private Button buttonCategory;
 
     public TriviaCategoryViewHolder(View itemView) {
         super(itemView);
         buttonCategory = itemView.findViewById(R.id.category_button);
-        buttonCategory.setOnClickListener(this);
     }
 
     public void onBind(TriviaCategory triviaCategory) {
@@ -37,10 +36,5 @@ public class TriviaCategoryViewHolder extends RecyclerView.ViewHolder implements
                 itemView.getContext().startActivity(difficultyActivity);
             }
         });
-    }
-
-    @Override
-    public void onClick(View view) {
-
     }
 }

@@ -1,12 +1,11 @@
-package com.ashleyjoachim.triviaapp.presenter;
+package com.ashleyjoachim.triviaapp.components.category.presenter;
 
 import android.util.Log;
 
 
-import com.ashleyjoachim.triviaapp.model.TriviaWrapperClass;
+import com.ashleyjoachim.triviaapp.basemodel.TriviaWrapperClass;
 import com.ashleyjoachim.triviaapp.network.TriviaAPICall;
 import com.ashleyjoachim.triviaapp.network.TriviaServiceGenerator;
-import com.ashleyjoachim.triviaapp.view.CategoryViewInterface;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;

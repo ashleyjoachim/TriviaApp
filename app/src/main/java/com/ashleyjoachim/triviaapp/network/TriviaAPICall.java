@@ -1,10 +1,10 @@
 package com.ashleyjoachim.triviaapp.network;
 
 
-import com.ashleyjoachim.triviaapp.model.CategoryCountWrapper;
-import com.ashleyjoachim.triviaapp.model.TriviaTokenRequest;
-import com.ashleyjoachim.triviaapp.model.TriviaTokenReset;
-import com.ashleyjoachim.triviaapp.model.TriviaWrapperClass;
+import com.ashleyjoachim.triviaapp.components.category.model.CategoryCountWrapper;
+import com.ashleyjoachim.triviaapp.basemodel.TriviaTokenRequest;
+import com.ashleyjoachim.triviaapp.basemodel.TriviaTokenReset;
+import com.ashleyjoachim.triviaapp.basemodel.TriviaWrapperClass;
 
 import io.reactivex.Observable;
 import retrofit2.Call;

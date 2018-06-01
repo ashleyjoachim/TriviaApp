@@ -1,4 +1,4 @@
-package com.ashleyjoachim.triviaapp.model;
+package com.ashleyjoachim.triviaapp.basemodel;
 
 
 public class TriviaTokenRequest {

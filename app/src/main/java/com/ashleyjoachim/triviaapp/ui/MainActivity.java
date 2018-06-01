@@ -1,4 +1,4 @@
-package com.ashleyjoachim.triviaapp.view;
+package com.ashleyjoachim.triviaapp.ui;
 
 
 import android.os.Bundle;
@@ -11,9 +11,10 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.ashleyjoachim.triviaapp.R;
-import com.ashleyjoachim.triviaapp.adapter.TriviaCategoryAdapter;
-import com.ashleyjoachim.triviaapp.model.TriviaWrapperClass;
-import com.ashleyjoachim.triviaapp.presenter.CategoryPresenter;
+import com.ashleyjoachim.triviaapp.components.category.recyclerview.TriviaCategoryAdapter;
+import com.ashleyjoachim.triviaapp.basemodel.TriviaWrapperClass;
+import com.ashleyjoachim.triviaapp.components.category.presenter.CategoryPresenter;
+import com.ashleyjoachim.triviaapp.components.category.presenter.CategoryViewInterface;
 
 public class MainActivity extends AppCompatActivity implements CategoryViewInterface {
     private String TAG = "MainActivity";

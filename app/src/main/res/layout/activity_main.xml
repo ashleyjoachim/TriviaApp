@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/activity_margin"
-    tools:context="com.ashleyjoachim.triviaapp.view.MainActivity">
+    tools:context="com.ashleyjoachim.triviaapp.ui.MainActivity">
 
 
     <android.support.v7.widget.RecyclerView

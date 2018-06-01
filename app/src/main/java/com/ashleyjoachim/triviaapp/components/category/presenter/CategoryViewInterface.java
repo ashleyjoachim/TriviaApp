@@ -1,6 +1,6 @@
-package com.ashleyjoachim.triviaapp.view;
+package com.ashleyjoachim.triviaapp.components.category.presenter;
 
-import com.ashleyjoachim.triviaapp.model.TriviaWrapperClass;
+import com.ashleyjoachim.triviaapp.basemodel.TriviaWrapperClass;
 
 public interface CategoryViewInterface {
 
