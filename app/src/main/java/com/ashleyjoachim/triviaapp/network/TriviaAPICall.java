@@ -1,7 +1,7 @@
 package com.ashleyjoachim.triviaapp.network;
 
 
-import com.ashleyjoachim.triviaapp.components.category.model.CategoryCountWrapper;
+import com.ashleyjoachim.triviaapp.category.model.CategoryCountWrapper;
 import com.ashleyjoachim.triviaapp.basemodel.TriviaTokenRequest;
 import com.ashleyjoachim.triviaapp.basemodel.TriviaTokenReset;
 import com.ashleyjoachim.triviaapp.basemodel.TriviaWrapperClass;

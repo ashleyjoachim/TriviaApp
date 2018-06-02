@@ -1,4 +1,4 @@
-package com.ashleyjoachim.triviaapp.components.category.recyclerview;
+package com.ashleyjoachim.triviaapp.category.recyclerview;
 
 
 import android.support.v7.widget.RecyclerView;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ashleyjoachim.triviaapp.R;
-import com.ashleyjoachim.triviaapp.components.category.model.TriviaCategory;
+import com.ashleyjoachim.triviaapp.category.model.TriviaCategory;
 
 import java.util.List;
 

@@ -11,10 +11,10 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.ashleyjoachim.triviaapp.R;
-import com.ashleyjoachim.triviaapp.components.category.recyclerview.TriviaCategoryAdapter;
+import com.ashleyjoachim.triviaapp.category.recyclerview.TriviaCategoryAdapter;
 import com.ashleyjoachim.triviaapp.basemodel.TriviaWrapperClass;
-import com.ashleyjoachim.triviaapp.components.category.presenter.CategoryPresenter;
-import com.ashleyjoachim.triviaapp.components.category.presenter.CategoryViewInterface;
+import com.ashleyjoachim.triviaapp.category.presenter.CategoryPresenter;
+import com.ashleyjoachim.triviaapp.category.presenter.CategoryViewInterface;
 
 public class MainActivity extends AppCompatActivity implements CategoryViewInterface {
     private String TAG = "MainActivity";

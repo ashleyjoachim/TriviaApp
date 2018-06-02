@@ -1,4 +1,4 @@
-package com.ashleyjoachim.triviaapp.components.category.presenter;
+package com.ashleyjoachim.triviaapp.category.presenter;
 
 import android.util.Log;
 
@@ -14,17 +14,12 @@ import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
 public class CategoryPresenter implements CategoryPresenterInterface {
-    CategoryViewInterface cvi;
+
+    private CategoryViewInterface cvi;
     private String TAG = "CategoryPresenter";
 
     public CategoryPresenter(CategoryViewInterface cvi) {
         this.cvi = cvi;
-    }
-
-    @Override
-    public void getCategories() {
-
-        getObservable().safeSubscribe(getObserver());
     }
 
     private Observable<TriviaWrapperClass> getObservable() {
@@ -55,5 +50,10 @@ public class CategoryPresenter implements CategoryPresenterInterface {
                 Log.d(TAG, "Completed");
             }
         };
+    }
+
+    @Override
+    public void getCategories() {
+        getObservable().safeSubscribe(getObserver());
     }
 }

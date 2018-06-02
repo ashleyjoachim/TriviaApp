@@ -1,12 +1,13 @@
-package com.ashleyjoachim.triviaapp.components.questions.presenter;
+package com.ashleyjoachim.triviaapp.category.presenter;
 
 import com.ashleyjoachim.triviaapp.basemodel.TriviaWrapperClass;
 
-public interface QuestionViewInterface {
+public interface CategoryViewInterface {
+
     void showToast(String s);
     void showProgressBar();
     void hideProgressBar();
-    void displayQuestions(TriviaWrapperClass triviaWrapperClass);
+    void displayCategories(TriviaWrapperClass triviaWrapperClass);
     void displayError(String s);
 
 }

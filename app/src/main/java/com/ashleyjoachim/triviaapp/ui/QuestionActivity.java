@@ -12,9 +12,9 @@ import android.widget.Toast;
 
 import com.ToxicBakery.viewpager.transforms.CubeOutTransformer;
 import com.ashleyjoachim.triviaapp.R;
-import com.ashleyjoachim.triviaapp.components.questions.presenter.QuestionPresenter;
-import com.ashleyjoachim.triviaapp.components.questions.presenter.QuestionViewInterface;
-import com.ashleyjoachim.triviaapp.components.questions.recyclerview.TriviaQuestionAdapter;
+import com.ashleyjoachim.triviaapp.questions.presenter.QuestionPresenter;
+import com.ashleyjoachim.triviaapp.questions.presenter.QuestionViewInterface;
+import com.ashleyjoachim.triviaapp.questions.recyclerview.TriviaQuestionAdapter;
 import com.ashleyjoachim.triviaapp.basemodel.TriviaWrapperClass;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.transform.DiscreteScrollItemTransformer;
@@ -24,12 +24,8 @@ public class QuestionActivity extends AppCompatActivity implements QuestionViewI
     private QuestionPresenter questionPresenter;
     private DiscreteScrollView questionRv;
     private ProgressBar progressBar;
-
-    private static int id;
-    private static String difficulty;
-    private static int count;
-    private static String getToken;
     private Button nextBtn;
+
     private ConstraintLayout constraintLayout;
 
     @Override
@@ -43,10 +39,10 @@ public class QuestionActivity extends AppCompatActivity implements QuestionViewI
         nextBtn = findViewById(R.id.next_page);
 
         Intent intent = getIntent();
-        id = intent.getExtras().getInt("id");
-        difficulty = intent.getExtras().getString("difficulty");
-        count = intent.getIntExtra("count", 10);
-        getToken = intent.getExtras().getString("token");
+        int id = intent.getExtras().getInt("id");
+        int count = intent.getIntExtra("count", 10);
+        String getToken = intent.getExtras().getString("token");
+        String difficulty = intent.getExtras().getString("difficulty");
 
         questionPresenter = new QuestionPresenter(this);
         questionPresenter.getQuestions(id, difficulty, count, getToken);
@@ -57,7 +53,7 @@ public class QuestionActivity extends AppCompatActivity implements QuestionViewI
 
     @Override
     public void onClick(View view) {
-        questionPresenter.onNextButtonClicked(QuestionActivity.this, constraintLayout, questionRv);
+        questionPresenter.onNextButtonClicked(QuestionActivity.this, constraintLayout, questionRv, nextBtn);
     }
 
     @Override
