@@ -48,7 +48,6 @@ public class QuestionActivity extends AppCompatActivity implements QuestionViewI
         questionPresenter.getQuestions(id, difficulty, count, getToken);
 
         nextBtn.setOnClickListener(this);
-
     }
 
     @Override

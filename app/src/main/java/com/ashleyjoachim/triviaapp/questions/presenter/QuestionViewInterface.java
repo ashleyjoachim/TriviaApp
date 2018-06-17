@@ -8,5 +8,4 @@ public interface QuestionViewInterface {
     void hideProgressBar();
     void displayQuestions(TriviaWrapperClass triviaWrapperClass);
     void displayError(String s);
-
 }

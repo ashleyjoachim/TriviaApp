@@ -1,6 +1,7 @@
 package com.ashleyjoachim.triviaapp.questions.presenter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.util.Log;
 import android.view.Gravity;
@@ -9,12 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ashleyjoachim.triviaapp.R;
 import com.ashleyjoachim.triviaapp.basemodel.TriviaWrapperClass;
 import com.ashleyjoachim.triviaapp.questions.recyclerview.TriviaHelper;
 import com.ashleyjoachim.triviaapp.network.TriviaAPICall;
 import com.ashleyjoachim.triviaapp.network.TriviaServiceGenerator;
+import com.ashleyjoachim.triviaapp.ui.MainActivity;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 
 import io.reactivex.Observable;
@@ -28,7 +31,6 @@ public class QuestionPresenter implements QuestionPresenterInterface {
     private String TAG = "QuestionPresenter";
     private QuestionViewInterface qvi;
     private static int score = 0;
-
 
     public QuestionPresenter(QuestionViewInterface qvi) {
         this.qvi = qvi;
@@ -57,20 +59,20 @@ public class QuestionPresenter implements QuestionPresenterInterface {
         return new DisposableObserver<TriviaWrapperClass>() {
             @Override
             public void onNext(@NonNull TriviaWrapperClass triviaWrapperClass) {
-                Log.d(TAG, "OnNext: " + triviaWrapperClass.getResponse_code());
                 qvi.displayQuestions(triviaWrapperClass);
+                Log.d(TAG, "OnNext: " + triviaWrapperClass.getResponse_code());
             }
 
             @Override
             public void onError(@NonNull Throwable e) {
-                Log.d(TAG, "onError: " + e.getStackTrace());
                 qvi.displayError("Error fetching Results");
+                Log.d(TAG, "onError: " + e.getStackTrace());
             }
 
             @Override
             public void onComplete() {
-                Log.d(TAG, "Completed");
                 qvi.hideProgressBar();
+                Log.d(TAG, "Completed");
             }
         };
 
@@ -82,7 +84,7 @@ public class QuestionPresenter implements QuestionPresenterInterface {
     }
 
     @Override
-    public void onNextButtonClicked(Context context, ConstraintLayout layout, final DiscreteScrollView scrollView, final Button next) {
+    public void onNextButtonClicked(final Context context, ConstraintLayout layout, final DiscreteScrollView scrollView, final Button next) {
         StringBuilder sb = new StringBuilder("Current Score: ");
         TriviaHelper triviaHelper = new TriviaHelper();
 
@@ -114,7 +116,10 @@ public class QuestionPresenter implements QuestionPresenterInterface {
             @Override
             public void onClick(View v) {
                 int next = scrollView.getCurrentItem() + 1;
+
                 scrollView.smoothScrollToPosition(next);
+                Toast.makeText(context, "Current Position: " + scrollView.getCurrentItem(), Toast.LENGTH_SHORT).show();
+
                 popupWindow.dismiss();
             }
         });
