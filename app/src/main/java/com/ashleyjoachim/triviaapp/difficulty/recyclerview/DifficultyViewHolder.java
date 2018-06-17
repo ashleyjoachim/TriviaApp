@@ -1,4 +1,4 @@
-package com.ashleyjoachim.triviaapp.components.difficulty.recyclerview;
+package com.ashleyjoachim.triviaapp.difficulty.recyclerview;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ashleyjoachim.triviaapp.R;
-import com.ashleyjoachim.triviaapp.components.difficulty.model.DifficultyModel;
+import com.ashleyjoachim.triviaapp.difficulty.model.DifficultyModel;
 import com.ashleyjoachim.triviaapp.ui.QuestionActivity;
 
 public class DifficultyViewHolder extends RecyclerView.ViewHolder {

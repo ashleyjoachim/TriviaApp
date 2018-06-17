@@ -1,4 +1,4 @@
-package com.ashleyjoachim.triviaapp.components.difficulty.model;
+package com.ashleyjoachim.triviaapp.difficulty.model;
 
 public class DifficultyModel {
     private String mode;

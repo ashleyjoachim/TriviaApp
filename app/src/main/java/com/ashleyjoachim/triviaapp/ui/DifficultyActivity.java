@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.ashleyjoachim.triviaapp.R;
-import com.ashleyjoachim.triviaapp.components.difficulty.recyclerview.DifficultyAdapter;
-import com.ashleyjoachim.triviaapp.components.difficulty.model.DifficultyModel;
+import com.ashleyjoachim.triviaapp.difficulty.recyclerview.DifficultyAdapter;
+import com.ashleyjoachim.triviaapp.difficulty.model.DifficultyModel;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.InfiniteScrollAdapter;
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
@@ -14,8 +14,11 @@ import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.ashleyjoachim.triviaapp.Constants.EASY;
+import static com.ashleyjoachim.triviaapp.Constants.HARD;
+import static com.ashleyjoachim.triviaapp.Constants.MEDIUM;
+
 public class DifficultyActivity extends AppCompatActivity {
-    private static final String EASY = "easy", MEDIUM = "medium", HARD = "hard";
     private DiscreteScrollView difficultyRecyclerView;
     private DifficultyAdapter difficultyAdapter;
     private InfiniteScrollAdapter wrapper;

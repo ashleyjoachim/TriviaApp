@@ -1,4 +1,4 @@
-package com.ashleyjoachim.triviaapp.components.category.presenter;
+package com.ashleyjoachim.triviaapp.category.presenter;
 
 
 interface CategoryPresenterInterface {
