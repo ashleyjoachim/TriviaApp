@@ -1,15 +1,23 @@
 package com.ashleyjoachim.triviaapp.category.model;
 
 
-public class CategoryCountWrapper {
-    private int category_id;
-    private CategoryQuestionCount category_question_count;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-    public int getCategory_id() {
-        return category_id;
+public class CategoryCountWrapper {
+    @Expose
+    @SerializedName("category_d")
+    private int categoryId;
+
+    @Expose
+    @SerializedName("category_question_count")
+    private CategoryQuestionCount categoryQuestionCount;
+
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public CategoryQuestionCount getCategory_question_count() {
-        return category_question_count;
+    public CategoryQuestionCount getCategoryQuestionCount() {
+        return categoryQuestionCount;
     }
 }

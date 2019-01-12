@@ -1,25 +1,34 @@
 package com.ashleyjoachim.triviaapp.basemodel;
 
-
 import com.ashleyjoachim.triviaapp.category.model.TriviaCategory;
 import com.ashleyjoachim.triviaapp.questions.model.TriviaResults;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
 public class TriviaWrapperClass {
-    private int response_code;
-    private List<TriviaResults> results;
-    private List<TriviaCategory> trivia_categories;
+    @Expose
+    @SerializedName("response_code")
+    private int responseCode;
 
-    public int getResponse_code() {
-        return response_code;
+    @Expose
+    @SerializedName("results")
+    private List<TriviaResults> results;
+
+    @Expose
+    @SerializedName("trivia_categories")
+    private List<TriviaCategory> triviaCategories;
+
+    public int getResponseCode() {
+        return responseCode;
     }
 
     public List<TriviaResults> getResults() {
         return results;
     }
 
-    public List<TriviaCategory> getTrivia_categories() {
-        return trivia_categories;
+    public List<TriviaCategory> getTriviaCategories() {
+        return triviaCategories;
     }
 }

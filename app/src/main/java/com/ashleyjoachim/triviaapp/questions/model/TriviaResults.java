@@ -1,13 +1,32 @@
 package com.ashleyjoachim.triviaapp.questions.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 public class TriviaResults {
+    @Expose
+    @SerializedName("category")
     private String category;
+
+    @Expose
+    @SerializedName("type")
     private String type;
+
+    @Expose
+    @SerializedName("difficulty")
     private String difficulty;
+
+    @Expose
+    @SerializedName("question")
     private String question;
-    private String correct_answer;
-    private String[] incorrect_answers;
+
+    @Expose
+    @SerializedName("correct_answer")
+    private String correctAnswer;
+
+    @Expose
+    @SerializedName("incorrect_answers")
+    private String[] incorrectAnswers;
 
     public String getCategory() {
         return category;
@@ -25,11 +44,11 @@ public class TriviaResults {
         return question;
     }
 
-    public String getCorrect_answer() {
-        return correct_answer;
+    public String getCorrectAnswer() {
+        return correctAnswer;
     }
 
-    public String[] getIncorrect_answers() {
-        return incorrect_answers;
+    public String[] getIncorrectAnswers() {
+        return incorrectAnswers;
     }
 }

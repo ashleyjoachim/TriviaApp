@@ -1,19 +1,19 @@
 package com.ashleyjoachim.triviaapp.network;
 
-
 import com.ashleyjoachim.triviaapp.category.model.CategoryCountWrapper;
 import com.ashleyjoachim.triviaapp.basemodel.TriviaTokenRequest;
 import com.ashleyjoachim.triviaapp.basemodel.TriviaTokenReset;
 import com.ashleyjoachim.triviaapp.basemodel.TriviaWrapperClass;
 
 import io.reactivex.Observable;
+import io.reactivex.Single;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public interface TriviaAPICall {
+public interface TriviaApi {
 
     @GET("api_category.php?")
-    Observable<TriviaWrapperClass> getCategoryDiscover();
+    Single<TriviaWrapperClass> getCategoryDiscover();
 
     @GET("api_count.php?")
     Observable<CategoryCountWrapper> getQuestionCount(
@@ -32,7 +32,7 @@ public interface TriviaAPICall {
     );
 
     @GET("api.php?")
-    Observable<TriviaWrapperClass> getTriviaDiscover(
+    Single<TriviaWrapperClass> getTriviaDiscover(
             @Query("amount") int amount,
             @Query("category") int category,
             @Query("difficulty") String difficulty,

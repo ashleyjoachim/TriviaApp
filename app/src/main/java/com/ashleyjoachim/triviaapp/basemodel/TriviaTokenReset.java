@@ -1,13 +1,19 @@
 package com.ashleyjoachim.triviaapp.basemodel;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 public class TriviaTokenReset {
+    @Expose
+    @SerializedName("response_code")
+    private int responseCode;
 
-    private int response_code;
+    @Expose
+    @SerializedName("token")
     private String token;
 
-    public int getResponse_code() {
-        return response_code;
+    public int getResponseCode() {
+        return responseCode;
     }
 
     public String getToken() {
