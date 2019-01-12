@@ -10,31 +10,25 @@ import com.ashleyjoachim.triviaapp.R;
 import com.ashleyjoachim.triviaapp.category.model.TriviaCategory;
 import com.ashleyjoachim.triviaapp.ui.DifficultyActivity;
 
-public class TriviaCategoryViewHolder extends RecyclerView.ViewHolder {
-    private Button buttonCategory;
+class TriviaCategoryViewHolder extends RecyclerView.ViewHolder {
+    private Button mButtonCategory;
 
-    public TriviaCategoryViewHolder(View itemView) {
+    TriviaCategoryViewHolder(View itemView) {
         super(itemView);
-        buttonCategory = itemView.findViewById(R.id.category_button);
+        mButtonCategory = itemView.findViewById(R.id.category_button);
     }
 
-    public void onBind(TriviaCategory triviaCategory) {
+    void onBind(TriviaCategory triviaCategory) {
         final String name = triviaCategory.getName();
         final int id = triviaCategory.getId();
-
-        buttonCategory.setText(name);
-
-        buttonCategory.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent difficultyActivity = new Intent(itemView.getContext(), DifficultyActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putInt("id", id);
-                bundle.putString("name", name);
-                difficultyActivity.putExtras(bundle);
-                itemView.getContext().startActivity(difficultyActivity);
-            }
+        mButtonCategory.setText(name);
+        mButtonCategory.setOnClickListener(v -> {
+            Intent difficultyActivity = new Intent(itemView.getContext(), DifficultyActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putInt("id", id);
+            bundle.putString("name", name);
+            difficultyActivity.putExtras(bundle);
+            itemView.getContext().startActivity(difficultyActivity);
         });
     }
 }

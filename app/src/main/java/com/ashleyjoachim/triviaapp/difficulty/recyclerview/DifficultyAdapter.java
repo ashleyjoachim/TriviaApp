@@ -12,10 +12,10 @@ import com.ashleyjoachim.triviaapp.difficulty.model.DifficultyModel;
 import java.util.List;
 
 public class DifficultyAdapter extends RecyclerView.Adapter<DifficultyViewHolder> {
-    private List<DifficultyModel> difficultyList;
+    private List<DifficultyModel> mDifficultyList;
 
     public DifficultyAdapter(List<DifficultyModel> difficultyList) {
-        this.difficultyList = difficultyList;
+        mDifficultyList = difficultyList;
     }
 
     @Override
@@ -26,12 +26,12 @@ public class DifficultyAdapter extends RecyclerView.Adapter<DifficultyViewHolder
 
     @Override
     public void onBindViewHolder(DifficultyViewHolder holder, int position) {
-        DifficultyModel difficultyModel = difficultyList.get(position);
+        DifficultyModel difficultyModel = mDifficultyList.get(position);
         holder.onBind(difficultyModel);
     }
 
     @Override
     public int getItemCount() {
-        return difficultyList.size();
+        return mDifficultyList.size();
     }
 }

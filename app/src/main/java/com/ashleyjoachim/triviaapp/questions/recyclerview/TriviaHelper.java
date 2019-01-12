@@ -12,15 +12,15 @@ import java.util.Arrays;
 
 public class TriviaHelper implements TriviaHelperInterface {
     private static final String TAG = "TriviaHelper";
-    private static boolean isCorrect;
+    private static boolean mIsCorrect;
 
     @Override
     public boolean isCorrect() {
-        return isCorrect;
+        return mIsCorrect;
     }
 
     private void setCorrect(boolean correct) {
-        isCorrect = correct;
+        mIsCorrect = correct;
     }
 
     @Override

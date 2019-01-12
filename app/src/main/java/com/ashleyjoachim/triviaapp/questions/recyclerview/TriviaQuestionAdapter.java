@@ -12,10 +12,10 @@ import java.util.List;
 
 public class TriviaQuestionAdapter extends RecyclerView.Adapter<TriviaQuestionViewHolder> {
 
-    private List<TriviaResults> triviaResultsList;
+    private List<TriviaResults> mTriviaResultsList;
 
     public TriviaQuestionAdapter(List<TriviaResults> triviaResultsList) {
-        this.triviaResultsList = triviaResultsList;
+        mTriviaResultsList = triviaResultsList;
         notifyDataSetChanged();
     }
 
@@ -28,13 +28,13 @@ public class TriviaQuestionAdapter extends RecyclerView.Adapter<TriviaQuestionVi
 
     @Override
     public void onBindViewHolder(TriviaQuestionViewHolder holder, final int position) {
-        final TriviaResults triviaResults = triviaResultsList.get(position);
+        final TriviaResults triviaResults = mTriviaResultsList.get(position);
         holder.onBind(triviaResults);
     }
 
     @Override
     public int getItemCount() {
-        return triviaResultsList.size();
+        return mTriviaResultsList.size();
     }
 
 }
