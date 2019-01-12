@@ -6,13 +6,11 @@ public interface TriviaViewInterface {
 
     void displayData(TriviaWrapperClass triviaWrapperClass);
 
-    void showToast(String s);
+    void displayError(String errorMessage);
 
     void showProgressBar();
 
     void hideProgressBar();
-
-    void displayError(String s);
 
     void stop();
 

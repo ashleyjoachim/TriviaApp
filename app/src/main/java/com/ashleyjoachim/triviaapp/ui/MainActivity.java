@@ -7,30 +7,30 @@ import com.ashleyjoachim.triviaapp.R;
 import com.ashleyjoachim.triviaapp.category.presenter.CategoryPresenter;
 
 public class MainActivity extends AppCompatActivity {
-    private CategoryPresenter categoryPresenter;
+    private CategoryPresenter mCategoryPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        categoryPresenter = new CategoryPresenter(findViewById(R.id.main_activity),this);
+        mCategoryPresenter = new CategoryPresenter(findViewById(R.id.main_activity),this);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        categoryPresenter.getCategories();
+        mCategoryPresenter.getCategories();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        categoryPresenter.destroy();
+        mCategoryPresenter.destroy();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        categoryPresenter.stop();
+        mCategoryPresenter.stop();
     }
 }

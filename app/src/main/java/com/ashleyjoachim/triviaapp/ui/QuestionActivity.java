@@ -8,13 +8,13 @@ import com.ashleyjoachim.triviaapp.R;
 import com.ashleyjoachim.triviaapp.questions.presenter.QuestionPresenter;
 
 public class QuestionActivity extends AppCompatActivity {
-    private QuestionPresenter questionPresenter;
+    private QuestionPresenter mQuestionPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
-        questionPresenter = new QuestionPresenter(findViewById(R.id.question_layout),this);
+        mQuestionPresenter = new QuestionPresenter(findViewById(R.id.question_layout),this);
     }
 
     @Override
@@ -25,18 +25,18 @@ public class QuestionActivity extends AppCompatActivity {
         int count = intent.getIntExtra("count", 10);
         String getToken = intent.getExtras().getString("token");
         String difficulty = intent.getExtras().getString("difficulty");
-        questionPresenter.getQuestions(id, difficulty, count, getToken);
+        mQuestionPresenter.getQuestions(id, difficulty, count, getToken);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        questionPresenter.stop();
+        mQuestionPresenter.stop();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        questionPresenter.destroy();
+        mQuestionPresenter.destroy();
     }
 }

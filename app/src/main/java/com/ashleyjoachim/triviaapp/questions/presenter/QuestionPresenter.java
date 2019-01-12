@@ -32,9 +32,8 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class QuestionPresenter implements TriviaViewInterface, View.OnClickListener {
-
     private final String TAG = "QuestionPresenter";
-    private static int score = 0;
+    private static int mScore = 0;
     private CompositeDisposable mDisposable;
     private DiscreteScrollView mScrollView;
     private ConstraintLayout mConstraintLayout;
@@ -106,10 +105,10 @@ public class QuestionPresenter implements TriviaViewInterface, View.OnClickListe
 
         if (triviaHelper.isCorrect()) {
             verifyTextView.setText(R.string.answer_correct);
-            score++;
-            scoreTextView.setText(sb.append(score * 100));
+            mScore++;
+            scoreTextView.setText(sb.append(mScore * 100));
         } else {
-            scoreTextView.setText(sb.append(score * 100));
+            scoreTextView.setText(sb.append(mScore * 100));
             verifyTextView.setText(R.string.answer_wrong);
         }
 
@@ -141,8 +140,8 @@ public class QuestionPresenter implements TriviaViewInterface, View.OnClickListe
     }
 
     @Override
-    public void showToast(String message) {
-        Toast.makeText(mContext, message, Toast.LENGTH_LONG).show();
+    public void displayError(String errorMessage) {
+        Toast.makeText(mContext, errorMessage, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -153,11 +152,6 @@ public class QuestionPresenter implements TriviaViewInterface, View.OnClickListe
     @Override
     public void hideProgressBar() {
         mProgressBar.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void displayError(String errorMessage) {
-        showToast(errorMessage);
     }
 
     @Override

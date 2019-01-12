@@ -23,7 +23,6 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class CategoryPresenter implements TriviaViewInterface {
-
     private String TAG = "CategoryPresenter";
     private CompositeDisposable mDisposable;
     private RecyclerView mRecyclerView;
@@ -77,8 +76,8 @@ public class CategoryPresenter implements TriviaViewInterface {
     }
 
     @Override
-    public void showToast(String message) {
-        Toast.makeText(mContext, message, Toast.LENGTH_LONG).show();
+    public void displayError(String errorMessage) {
+        Toast.makeText(mContext, errorMessage, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -89,11 +88,6 @@ public class CategoryPresenter implements TriviaViewInterface {
     @Override
     public void hideProgressBar() {
         mProgressBar.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void displayError(String s) {
-        showToast(s);
     }
 
     @Override

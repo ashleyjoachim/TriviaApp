@@ -13,10 +13,10 @@ import java.util.List;
 
 public class TriviaCategoryAdapter extends RecyclerView.Adapter<TriviaCategoryViewHolder> {
 
-    private List<TriviaCategory> triviaCategories;
+    private List<TriviaCategory> mTriviaCategories;
 
     public TriviaCategoryAdapter(List<TriviaCategory> triviaCategories) {
-        this.triviaCategories = triviaCategories;
+        mTriviaCategories = triviaCategories;
     }
 
     @Override
@@ -28,13 +28,13 @@ public class TriviaCategoryAdapter extends RecyclerView.Adapter<TriviaCategoryVi
 
     @Override
     public void onBindViewHolder(TriviaCategoryViewHolder holder, final int position) {
-        TriviaCategory triviaCategory = triviaCategories.get(position);
+        TriviaCategory triviaCategory = mTriviaCategories.get(position);
         holder.onBind(triviaCategory);
     }
 
     @Override
     public int getItemCount() {
-        return triviaCategories.size();
+        return mTriviaCategories.size();
     }
 
 }

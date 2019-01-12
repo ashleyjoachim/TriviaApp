@@ -12,17 +12,17 @@ import com.ashleyjoachim.triviaapp.difficulty.model.DifficultyModel;
 import com.ashleyjoachim.triviaapp.ui.QuestionActivity;
 
 class DifficultyViewHolder extends RecyclerView.ViewHolder {
-    private TextView mode;
+    private TextView mMode;
 
     DifficultyViewHolder(View itemView) {
         super(itemView);
-        mode = itemView.findViewById(R.id.button_difficulty);
+        mMode = itemView.findViewById(R.id.button_difficulty);
     }
 
     void onBind(DifficultyModel model) {
         final String setting = model.getMode();
-        mode.setText(setting);
-        mode.setOnClickListener((View v) -> getDifficultyFromIntent(setting));
+        mMode.setText(setting);
+        mMode.setOnClickListener((View v) -> getDifficultyFromIntent(setting));
     }
 
     private void getDifficultyFromIntent(String setting) {
