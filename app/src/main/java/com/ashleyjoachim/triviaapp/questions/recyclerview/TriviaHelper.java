@@ -5,7 +5,6 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ashleyjoachim.triviaapp.questions.model.TriviaResults;
 
@@ -41,8 +40,8 @@ public class TriviaHelper implements TriviaHelperInterface {
                            RadioGroup questionGroup, RadioButton choiceOne, RadioButton choiceTwo,
                            RadioButton choiceThree, RadioButton choiceFour) {
 
-        final String[] incorrect = triviaResults.getIncorrect_answers();
-        final String correct = triviaResults.getCorrect_answer();
+        final String[] incorrect = triviaResults.getIncorrectAnswers();
+        final String correct = triviaResults.getCorrectAnswer();
 
         setChoiceHelper(incorrect, correct, choiceOne, choiceTwo, choiceThree, choiceFour);
 
@@ -54,26 +53,21 @@ public class TriviaHelper implements TriviaHelperInterface {
                 String checkedButton = checkedRadioButton.getText().toString();
 
                 if (isChecked) {
-
                     if (checkedButton.equals(correct)) {
-
                         setCorrect(true);
                         Log.d(TAG, "onCheckedChanged: correct");
                     } else {
-
                         setCorrect(false);
                         Log.d(TAG, "onCheckedChanged: incorrect");
                     }
                 }
             }
         });
-
     }
 
     private void setChoiceHelper(String[] incorrect, String correct, RadioButton one,
                                  RadioButton two, RadioButton three, RadioButton four) {
         if (incorrect.length == 1) {
-
             if (correct.equals("True")) {
                 one.setText(correct);
                 two.setText(incorrect[0]);
@@ -81,14 +75,11 @@ public class TriviaHelper implements TriviaHelperInterface {
                 one.setText(incorrect[0]);
                 two.setText(correct);
             }
-
             three.setVisibility(View.GONE);
             four.setVisibility(View.GONE);
 
         } else {
-
             String[] choicesArray = new String[incorrect.length + 1];
-
             choicesArray[0] = correct;
             choicesArray[1] = incorrect[0];
             choicesArray[2] = incorrect[1];
@@ -102,5 +93,4 @@ public class TriviaHelper implements TriviaHelperInterface {
             four.setText(choicesArray[3]);
         }
     }
-
 }

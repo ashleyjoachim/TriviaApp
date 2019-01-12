@@ -1,59 +1,110 @@
 package com.ashleyjoachim.triviaapp.category.presenter;
 
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
-
+import com.ashleyjoachim.triviaapp.R;
 import com.ashleyjoachim.triviaapp.basemodel.TriviaWrapperClass;
-import com.ashleyjoachim.triviaapp.network.TriviaAPICall;
-import com.ashleyjoachim.triviaapp.network.TriviaServiceGenerator;
+import com.ashleyjoachim.triviaapp.category.recyclerview.TriviaCategoryAdapter;
+import com.ashleyjoachim.triviaapp.network.TriviaApi;
+import com.ashleyjoachim.triviaapp.network.TriviaRetrofitService;
+import com.ashleyjoachim.triviaapp.ui.TriviaViewInterface;
 
-import io.reactivex.Observable;
+import io.reactivex.Single;
+import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.observers.DisposableObserver;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class CategoryPresenter implements CategoryPresenterInterface {
+public class CategoryPresenter implements TriviaViewInterface {
 
-    private CategoryViewInterface cvi;
     private String TAG = "CategoryPresenter";
+    private CompositeDisposable mDisposable;
+    private RecyclerView mRecyclerView;
+    private ProgressBar mProgressBar;
+    private Context mContext;
 
-    public CategoryPresenter(CategoryViewInterface cvi) {
-        this.cvi = cvi;
+    public CategoryPresenter(View view, Context context) {
+        mContext = context;
+        mRecyclerView = view.findViewById(R.id.category_rv);
+        mProgressBar = view.findViewById(R.id.category_progress_bar);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
+        mDisposable = new CompositeDisposable();
     }
 
-    private Observable<TriviaWrapperClass> getObservable() {
-        return TriviaServiceGenerator.getRetrofit()
-                .create(TriviaAPICall.class)
-                .getCategoryDiscover()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
-    }
+    public void getCategories() {
+        TriviaApi triviaApi = TriviaRetrofitService.getTriviaApi();
+        Single<TriviaWrapperClass> categories = triviaApi.getCategoryDiscover();
+        categories.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<TriviaWrapperClass>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        mDisposable.add(d);
+                    }
 
-    private DisposableObserver<TriviaWrapperClass> getObserver() {
-        return new DisposableObserver<TriviaWrapperClass>() {
-            @Override
-            public void onNext(@NonNull TriviaWrapperClass triviaWrapperClass) {
-                cvi.displayCategories(triviaWrapperClass);
-                Log.d(TAG, "OnNext: " + triviaWrapperClass.getResponse_code());
-            }
+                    @Override
+                    public void onSuccess(TriviaWrapperClass triviaWrapperClass) {
+                        displayData(triviaWrapperClass);
+                        hideProgressBar();
+                        Log.d(TAG, String.valueOf(triviaWrapperClass.getResponseCode()));
+                    }
 
-            @Override
-            public void onError(@NonNull Throwable e) {
-                cvi.displayError("Error fetching Categories Data");
-                Log.d(TAG, "onError: " + e.getStackTrace());
-            }
+                    @Override
+                    public void onError(Throwable e) {
+                        displayError("Error fetching Categories Data");
+                        hideProgressBar();
+                        Log.d(TAG, "Category response null");
 
-            @Override
-            public void onComplete() {
-                cvi.hideProgressBar();
-                Log.d(TAG, "Completed");
-            }
-        };
+                    }
+                });
     }
 
     @Override
-    public void getCategories() {
-        getObservable().safeSubscribe(getObserver());
+    public void displayData(TriviaWrapperClass triviaWrapperClass) {
+        if (triviaWrapperClass != null) {
+            mRecyclerView.setAdapter(new TriviaCategoryAdapter(triviaWrapperClass.getTriviaCategories()));
+            Log.d(TAG, String.valueOf(triviaWrapperClass.getResponseCode()));
+        } else {
+            Log.d(TAG, "Category response null");
+        }
+    }
+
+    @Override
+    public void showToast(String message) {
+        Toast.makeText(mContext, message, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void showProgressBar() {
+        mProgressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgressBar() {
+        mProgressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void displayError(String s) {
+        showToast(s);
+    }
+
+    @Override
+    public void stop() {
+        mDisposable.clear();
+    }
+
+    @Override
+    public void destroy() {
+        if (!mDisposable.isDisposed()) {
+            mDisposable.dispose();
+        }
     }
 }

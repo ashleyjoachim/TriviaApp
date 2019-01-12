@@ -9,14 +9,12 @@ import android.widget.TextView;
 import com.ashleyjoachim.triviaapp.R;
 import com.ashleyjoachim.triviaapp.questions.model.TriviaResults;
 
-
-public class TriviaQuestionViewHolder extends RecyclerView.ViewHolder {
-
+class TriviaQuestionViewHolder extends RecyclerView.ViewHolder {
     private TextView question;
     private RadioGroup questionGroup;
     private RadioButton choiceOne, choiceTwo, choiceThree, choiceFour;
 
-    public TriviaQuestionViewHolder(View itemView) {
+    TriviaQuestionViewHolder(View itemView) {
         super(itemView);
 
         question = itemView.findViewById(R.id.question);
@@ -28,7 +26,7 @@ public class TriviaQuestionViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-    public void onBind(final TriviaResults triviaResults) {
+    void onBind(final TriviaResults triviaResults) {
         resetRadioButtons();
 
         TriviaHelper triviaHelper = new TriviaHelper();
@@ -50,5 +48,4 @@ public class TriviaQuestionViewHolder extends RecyclerView.ViewHolder {
 
         choiceFour.setVisibility(View.VISIBLE);
     }
-
 }

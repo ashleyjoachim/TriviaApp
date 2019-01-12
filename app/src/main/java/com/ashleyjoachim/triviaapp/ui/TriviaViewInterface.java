@@ -1,11 +1,20 @@
-package com.ashleyjoachim.triviaapp.questions.presenter;
+package com.ashleyjoachim.triviaapp.ui;
 
 import com.ashleyjoachim.triviaapp.basemodel.TriviaWrapperClass;
 
-public interface QuestionViewInterface {
+public interface TriviaViewInterface {
+
+    void displayData(TriviaWrapperClass triviaWrapperClass);
+
     void showToast(String s);
+
     void showProgressBar();
+
     void hideProgressBar();
-    void displayQuestions(TriviaWrapperClass triviaWrapperClass);
+
     void displayError(String s);
+
+    void stop();
+
+    void destroy();
 }

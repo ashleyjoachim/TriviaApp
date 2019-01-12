@@ -1,24 +1,38 @@
 package com.ashleyjoachim.triviaapp.category.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class CategoryQuestionCount {
-    private int total_question_count;
-    private int total_easy_question_count;
-    private int total_medium_question_count;
-    private int total_hard_question_count;
+    @Expose
+    @SerializedName("total_question_count")
+    private int totalQuestionCount;
 
-    public int getTotal_question_count() {
-        return total_question_count;
+    @Expose
+    @SerializedName("total_easy_question_count")
+    private int totalEasyQuestionCount;
+
+    @Expose
+    @SerializedName("total_medium_question_count")
+    private int totalMediumQuestionCount;
+
+    @Expose
+    @SerializedName("total_hard_question_count")
+    private int totalHardQuestionCount;
+
+    public int getTotalQuestionCount() {
+        return totalQuestionCount;
     }
 
-    public int getTotal_easy_question_count() {
-        return total_easy_question_count;
+    public int getTotalEasyQuestionCount() {
+        return totalEasyQuestionCount;
     }
 
-    public int getTotal_medium_question_count() {
-        return total_medium_question_count;
+    public int getTotalMediumQuestionCount() {
+        return totalMediumQuestionCount;
     }
 
-    public int getTotal_hard_question_count() {
-        return total_hard_question_count;
+    public int getTotalHardQuestionCount() {
+        return totalHardQuestionCount;
     }
 }

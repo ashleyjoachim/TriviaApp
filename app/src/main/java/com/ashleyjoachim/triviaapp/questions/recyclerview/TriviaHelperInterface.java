@@ -21,5 +21,4 @@ public interface TriviaHelperInterface {
     );
 
     boolean isCorrect();
-
 }

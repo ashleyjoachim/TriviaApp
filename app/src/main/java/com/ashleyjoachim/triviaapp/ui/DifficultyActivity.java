@@ -19,27 +19,20 @@ import static com.ashleyjoachim.triviaapp.Constants.HARD;
 import static com.ashleyjoachim.triviaapp.Constants.MEDIUM;
 
 public class DifficultyActivity extends AppCompatActivity {
-    private DiscreteScrollView difficultyRecyclerView;
-    private DifficultyAdapter difficultyAdapter;
-    private InfiniteScrollAdapter wrapper;
-    private List<DifficultyModel> difficultyList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_difficulty);
 
-        difficultyList = new ArrayList<>();
+        List<DifficultyModel> difficultyList = new ArrayList<>();
         difficultyList.add(new DifficultyModel(EASY));
         difficultyList.add(new DifficultyModel(MEDIUM));
         difficultyList.add(new DifficultyModel(HARD));
 
-        difficultyRecyclerView = findViewById(R.id.difficulty_picker_rv);
-
-        difficultyAdapter = new DifficultyAdapter(difficultyList);
-
-        wrapper = InfiniteScrollAdapter.wrap(difficultyAdapter);
-
+        DiscreteScrollView difficultyRecyclerView = findViewById(R.id.difficulty_picker_rv);
+        DifficultyAdapter difficultyAdapter = new DifficultyAdapter(difficultyList);
+        InfiniteScrollAdapter wrapper = InfiniteScrollAdapter.wrap(difficultyAdapter);
         difficultyRecyclerView.setAdapter(wrapper);
 
         difficultyRecyclerView.setItemTransformer(new ScaleTransformer.Builder()
