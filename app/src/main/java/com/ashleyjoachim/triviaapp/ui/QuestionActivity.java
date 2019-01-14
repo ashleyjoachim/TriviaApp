@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.ashleyjoachim.triviaapp.R;
-import com.ashleyjoachim.triviaapp.questions.presenter.QuestionPresenter;
+import com.ashleyjoachim.triviaapp.ui.presenter.QuestionPresenter;
 
 public class QuestionActivity extends AppCompatActivity {
     private QuestionPresenter mQuestionPresenter;

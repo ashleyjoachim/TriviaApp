@@ -1,4 +1,4 @@
-package com.ashleyjoachim.triviaapp.category.presenter;
+package com.ashleyjoachim.triviaapp.ui.presenter;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,11 +9,11 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.ashleyjoachim.triviaapp.R;
-import com.ashleyjoachim.triviaapp.basemodel.TriviaWrapperClass;
-import com.ashleyjoachim.triviaapp.category.recyclerview.TriviaCategoryAdapter;
-import com.ashleyjoachim.triviaapp.network.TriviaApi;
-import com.ashleyjoachim.triviaapp.network.TriviaRetrofitService;
-import com.ashleyjoachim.triviaapp.ui.TriviaViewInterface;
+import com.ashleyjoachim.triviaapp.data.model.TriviaWrapperClass;
+import com.ashleyjoachim.triviaapp.controller.TriviaCategoryAdapter;
+import com.ashleyjoachim.triviaapp.data.rest.TriviaApi;
+import com.ashleyjoachim.triviaapp.data.rest.TriviaServiceProvider;
+import com.ashleyjoachim.triviaapp.util.TriviaViewInterface;
 
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;
@@ -38,7 +38,7 @@ public class CategoryPresenter implements TriviaViewInterface {
     }
 
     public void getCategories() {
-        TriviaApi triviaApi = TriviaRetrofitService.getTriviaApi();
+        TriviaApi triviaApi = TriviaServiceProvider.provideTriviaApi();
         Single<TriviaWrapperClass> categories = triviaApi.getCategoryDiscover();
         categories.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

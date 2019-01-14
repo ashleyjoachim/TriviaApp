@@ -1,4 +1,4 @@
-package com.ashleyjoachim.triviaapp.questions.recyclerview;
+package com.ashleyjoachim.triviaapp.controller;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -7,7 +7,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.ashleyjoachim.triviaapp.R;
-import com.ashleyjoachim.triviaapp.questions.model.TriviaResults;
+import com.ashleyjoachim.triviaapp.data.model.TriviaResults;
+import com.ashleyjoachim.triviaapp.util.TriviaHelper;
 
 class TriviaQuestionViewHolder extends RecyclerView.ViewHolder {
     private TextView mQuestion;

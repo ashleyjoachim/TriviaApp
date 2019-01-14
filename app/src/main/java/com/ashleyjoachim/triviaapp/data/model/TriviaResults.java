@@ -1,4 +1,4 @@
-package com.ashleyjoachim.triviaapp.questions.model;
+package com.ashleyjoachim.triviaapp.data.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

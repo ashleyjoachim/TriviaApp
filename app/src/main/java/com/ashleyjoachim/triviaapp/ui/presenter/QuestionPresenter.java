@@ -1,4 +1,4 @@
-package com.ashleyjoachim.triviaapp.questions.presenter;
+package com.ashleyjoachim.triviaapp.ui.presenter;
 
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
@@ -14,12 +14,12 @@ import android.widget.Toast;
 
 import com.ToxicBakery.viewpager.transforms.CubeOutTransformer;
 import com.ashleyjoachim.triviaapp.R;
-import com.ashleyjoachim.triviaapp.basemodel.TriviaWrapperClass;
-import com.ashleyjoachim.triviaapp.ui.TriviaViewInterface;
-import com.ashleyjoachim.triviaapp.network.TriviaApi;
-import com.ashleyjoachim.triviaapp.network.TriviaRetrofitService;
-import com.ashleyjoachim.triviaapp.questions.recyclerview.TriviaHelper;
-import com.ashleyjoachim.triviaapp.questions.recyclerview.TriviaQuestionAdapter;
+import com.ashleyjoachim.triviaapp.data.model.TriviaWrapperClass;
+import com.ashleyjoachim.triviaapp.util.TriviaViewInterface;
+import com.ashleyjoachim.triviaapp.data.rest.TriviaApi;
+import com.ashleyjoachim.triviaapp.data.rest.TriviaServiceProvider;
+import com.ashleyjoachim.triviaapp.util.TriviaHelper;
+import com.ashleyjoachim.triviaapp.controller.TriviaQuestionAdapter;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 
 import java.util.Arrays;
@@ -57,7 +57,7 @@ public class QuestionPresenter implements TriviaViewInterface, View.OnClickListe
                              String difficulty,
                              int count,
                              String token) {
-        TriviaApi triviaApi = TriviaRetrofitService.getTriviaApi();
+        TriviaApi triviaApi = TriviaServiceProvider.provideTriviaApi();
         Single<TriviaWrapperClass> trivia;
         int limit = 12;
 

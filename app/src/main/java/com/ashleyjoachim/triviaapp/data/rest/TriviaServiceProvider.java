@@ -1,20 +1,18 @@
 package com.ashleyjoachim.triviaapp.data.rest;
 
-import com.ashleyjoachim.triviaapp.data.rest.TriviaApi;
-
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.ashleyjoachim.triviaapp.util.Constants.BASE_URL;
 
-public class TriviaRetrofitService {
+public class TriviaServiceProvider {
 
-    public static TriviaApi getTriviaApi() {
-        return getRetrofit().create(TriviaApi.class);
+    public static TriviaApi provideTriviaApi() {
+        return retrofit().create(TriviaApi.class);
     }
 
-    private static Retrofit getRetrofit() {
+    private static Retrofit retrofit() {
         return new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())

@@ -1,4 +1,4 @@
-package com.ashleyjoachim.triviaapp;
+package com.ashleyjoachim.triviaapp.util;
 
 public class Constants {
     public static final String BASE_URL = "https://opentdb.com/";

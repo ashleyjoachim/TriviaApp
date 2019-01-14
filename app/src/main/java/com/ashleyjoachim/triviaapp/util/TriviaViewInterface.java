@@ -1,6 +1,6 @@
-package com.ashleyjoachim.triviaapp.ui;
+package com.ashleyjoachim.triviaapp.util;
 
-import com.ashleyjoachim.triviaapp.basemodel.TriviaWrapperClass;
+import com.ashleyjoachim.triviaapp.data.model.TriviaWrapperClass;
 
 public interface TriviaViewInterface {
 

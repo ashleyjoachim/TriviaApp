@@ -1,7 +1,5 @@
-package com.ashleyjoachim.triviaapp.basemodel;
+package com.ashleyjoachim.triviaapp.data.model;
 
-import com.ashleyjoachim.triviaapp.category.model.TriviaCategory;
-import com.ashleyjoachim.triviaapp.questions.model.TriviaResults;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

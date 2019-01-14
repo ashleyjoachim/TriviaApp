@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.DifficultyActivity" />
-        <activity android:name=".ui.QuestionActivity"/>
+        <activity android:name=".ui.QuestionActivity" />
+        <activity android:name=".ui.CategoryActivity"></activity>
     </application>
 
 </manifest>

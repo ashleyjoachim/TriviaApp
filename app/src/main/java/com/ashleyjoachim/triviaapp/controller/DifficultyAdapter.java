@@ -1,4 +1,4 @@
-package com.ashleyjoachim.triviaapp.difficulty.recyclerview;
+package com.ashleyjoachim.triviaapp.controller;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 
 import com.ashleyjoachim.triviaapp.R;
-import com.ashleyjoachim.triviaapp.difficulty.model.DifficultyModel;
+import com.ashleyjoachim.triviaapp.data.model.DifficultyModel;
 
 import java.util.List;
 

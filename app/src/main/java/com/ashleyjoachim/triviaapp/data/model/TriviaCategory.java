@@ -1,4 +1,4 @@
-package com.ashleyjoachim.triviaapp.category.model;
+package com.ashleyjoachim.triviaapp.data.model;
 
 
 import com.google.gson.annotations.Expose;
@@ -20,5 +20,4 @@ public class TriviaCategory {
     public String getName() {
         return name;
     }
-
 }
